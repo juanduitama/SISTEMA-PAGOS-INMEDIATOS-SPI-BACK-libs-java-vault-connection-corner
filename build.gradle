@@ -1,14 +1,30 @@
 plugins {
-    id("io.micronaut.application") version "4.5.3"
-    id("com.gradleup.shadow") version "8.3.6"
-    id("io.micronaut.aot") version "4.5.3"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.micronaut.application") version "4.4.4"
+    id("io.micronaut.aot") version "4.4.4"
+    id 'java-library'
+    id 'maven-publish'
+    id 'jacoco'
 }
 
-version = "0.1"
-group = "co.com.ath.cornerconn"
+version = "1.0-SNAPSHOT"
+group = "co.com.ath"
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': 'lib',
+                'Implementation-Version': 1.0)
+    }
+}
+
+java {
+    withSourcesJar()
+}
 
 repositories {
+    // Use Maven Central for resolving dependencies.
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -18,11 +34,51 @@ dependencies {
     implementation("io.micronaut.aws:micronaut-aws-lambda-events-serde")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     runtimeOnly("ch.qos.logback:logback-classic")
+
+    // This dependency is exported to consumers, that is to say found on their compile classpath.
+    api 'org.apache.commons:commons-math3:3.6.1'
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.12.0'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.12.0'
+    testImplementation group: 'org.powermock', name: 'powermock-core', version: '2.0.9'
+
+    implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.1.0'
+    implementation group: 'jakarta.el', name: 'jakarta.el-api', version: '3.0.3'
+    implementation group: 'org.glassfish', name: 'jakarta.el', version: '4.0.2'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.1.Final'
+
+    implementation group: 'co.com.ath', name: 'spbvi-commons-lib', version: '1.0-SNAPSHOT'
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.12.0'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.12.0'
+    testImplementation group: 'org.powermock', name: 'powermock-core', version: '2.0.9'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.1'
+
+    // Consumos HTTP
+    implementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: '3.1.0'
+
+
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
 }
 
 
 application {
-    mainClass = "co.com.ath.cornerconn.Application"
+    mainClass = "co.com.ath.Application"
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
@@ -37,7 +93,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("co.com.ath.cornerconn.*")
+        annotations("co.com.ath.*")
     }
     aot {
         // Please review carefully the optimizations enabled below
@@ -57,10 +113,30 @@ micronaut {
 tasks.named("dockerfileNative") {
     jdkVersion = "17"
     args(
-        "-XX:MaximumHeapSizePercent=80",
-        "-Dio.netty.allocator.numDirectArenas=0",
-        "-Dio.netty.noPreferDirect=true"
+            "-XX:MaximumHeapSizePercent=80",
+            "-Dio.netty.allocator.numDirectArenas=0",
+            "-Dio.netty.noPreferDirect=true"
     )
 }
 
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+publishing {
+    publications {
+        security(MavenPublication) {
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+}
 
