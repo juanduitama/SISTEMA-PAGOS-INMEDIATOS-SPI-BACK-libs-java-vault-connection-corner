@@ -1,5 +1,6 @@
 package co.com.ath.cornerconn.service;
 
+import co.com.ath.cornerconn.models.HttpResponseWrapper;
 import co.com.ath.cornerconn.models.enrollment.EnrollmentRq;
 
 import java.io.IOException;
