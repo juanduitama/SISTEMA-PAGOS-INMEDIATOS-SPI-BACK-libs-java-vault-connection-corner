@@ -37,22 +37,22 @@ public enum KeyTypeEnum {
     /**
      * Numero de celular
      */
-    PHONE("2", "PHONE"),
+    PHONE("2", "N"),
 
     /**
      * Correo electronico
      */
-    EMAIL("3", "EMAIL"),
+    EMAIL("3", "E"),
 
     /**
      * Codigo del comercio
      */
-    MERCHANT("5", "MERCHANT"),
+    MERCHANT("5", "B"),
 
     /**
      * Llave alfanumerica
      */
-    KEY_ALPHANUMERIC("4", "ALPHANUM"),
+    KEY_ALPHANUMERIC("4", "O"),
 
     ;
 

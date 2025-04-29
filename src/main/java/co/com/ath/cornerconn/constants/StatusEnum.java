@@ -32,22 +32,22 @@ public enum StatusEnum {
     /**
      * Define valor de estado para llaves activas
      */
-    ACTIVE("ACTIVA", "ACTIVE"),
+    ACTIVE("ACTIVA", "ACTV"),
 
     /**
      * Define valor de estado para llaves inactivas
      */
-    BLOCKED_BY_CLIENT("BLOQUEADA", "SUSPENDED_BY_CLIENT"),
+    BLOCKED_BY_CLIENT("BLOQUEADA", "SUSP"),
 
     /**
      * Define valor de estado para llaves bloqueadas por el participante
      */
-    BLOCKED_BY_PARTICIPANT("ON_HOLD", "SUSPENDED_BY_PARTICIPANT"),
+    BLOCKED_BY_PARTICIPANT("ON_HOLD", "SUSB"),
 
     /**
      * Define valor de estado para llaves bloqueadas por el sistema
      */
-    CANCEL("CANCELADA","CANCEL");
+    CANCEL("CANCELADA","ICTV");
 
     private final String athValue;
     private final String cornerValue;

@@ -32,28 +32,28 @@ public enum AcctTypeEnum {
     /**
      * Define valor para cuentas de ahorro
      */
-    CAHO("CAHO","CAHO"),
+    CAHO("CAHO"),
 
     /**
      * Define valor para cuentas corrientes
      */
-    CCTE("CCTE","CCTE"),
+    CCTE("CCTE"),
 
     /**
      * Define valor para depósitos de bajo monto
      */
-    DBMO("DBMO","DBMO"),
+    DBMO("DBMO"),
 
     /**
      * Define valor para depósitos ordinarios
      */
-    DORD("DORD","DORD"),
+    DORD("DORD"),
 
     /**
      * Define valor para depósitos de bajo monto inclusivos
      */
-    DBMI("DBMI","DBMI");
+    DBMI("DBMI");
 
     private final String athValue;
-    private final String cornerValue;
+
 }

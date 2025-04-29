@@ -32,44 +32,43 @@ public enum DocumentTypeEnum {
     /**
      * Cédula de ciudadanía
      */
-    CC("CC","CC"),
+    CC("CC"),
 
     /**
      * Cédula de Extranjería
      */
-    CE("CE","CE"),
+    CE("CE"),
 
     /**
      * Número Único de Identificación Personal
      */
-    NUIP("NUIP","NUIP"),
+    NUIP("NUIP"),
 
     /**
      * Permiso de Protección Temporal
      */
-    PPT("PPT","PPT"),
+    PPT("PPT"),
 
     /**
      * Número de Identificación Tributaria, sin digito de verificación
      */
-    NIT("NIT","NIT"),
+    NIT("NIT"),
 
     /**
      * Permiso Especial de Permanencia
      */
-    PEP("PEP","PEP"),
+    PEP("PEP"),
 
     /**
      * Número de Pasaporte
      */
-    PAS("PAS","PA"),
+    PAS("PAS"),
 
     /**
      * TDI - Tarjeta de identidad
      */
-    TDI("TDI","TI");
+    TDI("TDI");
 
 
     private final String athValue;
-    private final String cornerValue;
 }

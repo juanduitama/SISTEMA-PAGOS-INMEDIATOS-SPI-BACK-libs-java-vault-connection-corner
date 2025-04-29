@@ -1,14 +1,17 @@
-package co.com.ath.cornerconn.constants;
+package co.com.ath.cornerconn.models;
 
+import io.micronaut.core.annotation.Introspected;
+import io.micronaut.serde.annotation.SerdeImport;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
- * PersonTypeEnum
+ * HttpResponseWrapper
  * <p>
  * Desarrollo ATH - SPBVI
  * <p>
- * Creado el: 16 de abril de 2025
+ * Creado el: 23 de octubre de 2024
  *
  * @author Luis F. Herreño Mateus
  * @version 1.0
@@ -23,22 +26,23 @@ import lombok.Getter;
  * expresa de A Toda Hora S.A o de quién represente sus derechos.
  * <p>
  * <p>
- * PersonTypeEnum define los valores para el tipo de persona que se va a registrar
+ * Clase HttpResponseWrapper que es el modelo del response a la hora de realizar la petición
  */
 @Getter
+@Setter
 @AllArgsConstructor
-public enum PersonTypeEnum {
+@Introspected
+@SerdeImport(HttpResponseWrapper.class)
+public class HttpResponseWrapper {
 
     /**
-     * NATURAL PERSON
+     * Cuerpo de la respuesta
      */
-    PN("PN", "N"),
+    private String responseBody;
 
     /**
-     * LEGAL PERSON
+     *
      */
-    PJ("PJ", "J");
+    private int statusCode;
 
-    private final String athValue;
-    private final String cornerValue;
 }
