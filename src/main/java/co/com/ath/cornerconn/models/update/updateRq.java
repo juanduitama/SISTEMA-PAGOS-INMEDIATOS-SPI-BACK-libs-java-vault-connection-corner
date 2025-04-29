@@ -3,7 +3,7 @@ package co.com.ath.cornerconn.models.update;
 import co.com.ath.cornerconn.models.Key;
 import co.com.ath.cornerconn.models.PaymentMethod;
 import co.com.ath.cornerconn.models.Person;
-import co.com.ath.cornerconn.models.enrollment.enrollmentRq;
+import co.com.ath.cornerconn.models.enrollment.EnrollmentRq;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.SerdeImport;

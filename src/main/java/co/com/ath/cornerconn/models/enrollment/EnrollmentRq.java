@@ -35,8 +35,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Introspected
-@SerdeImport(enrollmentRq.class)
-public class enrollmentRq {
+@SerdeImport(EnrollmentRq.class)
+public class EnrollmentRq {
 
     /**
      * Información de la persona para la llave.
@@ -51,7 +51,7 @@ public class enrollmentRq {
     private Key key;
 
     /**
-     * Metodo de pago (Información de la cuenta por participante).
+     * Método de pago (Información de la cuenta por participante).
      */
     @JsonProperty("payment_method")
     private PaymentMethod paymentMethod;

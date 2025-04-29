@@ -61,7 +61,7 @@ public class MsgInformationResponse {
     private String description;
 
     /**
-     * Descripción de la llave por participante.
+     * Descripción del estado de la llave.
      */
     @JsonProperty("cd_state_key")
     private String statusKey;
