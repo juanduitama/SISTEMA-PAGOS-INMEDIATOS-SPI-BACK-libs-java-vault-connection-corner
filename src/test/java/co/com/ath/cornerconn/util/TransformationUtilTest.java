@@ -3,6 +3,10 @@ package co.com.ath.cornerconn.util;
 import co.com.ath.cornerconn.constants.KeyTypeEnum;
 import co.com.ath.cornerconn.constants.PersonTypeEnum;
 import co.com.ath.cornerconn.constants.StatusEnum;
+import co.com.ath.cornerconn.models.Key;
+import co.com.ath.cornerconn.models.Person;
+import co.com.ath.cornerconn.models.enrollment.EnrollmentRq;
+import co.com.ath.cornerconn.models.update.CornerUpdateRq;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
@@ -85,5 +89,37 @@ class TransformationUtilTest {
         assertEquals(PersonTypeEnum.PN.getCornerValue(),result);
 
         assertNotEquals(null, result);
+    }
+
+    @Test
+    void transformEnrollmentRq() {
+        EnrollmentRq enrollmentDto = new EnrollmentRq();
+        Person person = new Person();
+        person.setTypePerson("oldType");
+        enrollmentDto.setPerson(person);
+        Key key = new Key();
+        key.setKeyType("oldKeyType");
+        enrollmentDto.setKey(key);
+
+        EnrollmentRq result = transformationUtil.transformEnrollmentRq(enrollmentDto);
+
+        assertEquals("transformedType", result.getPerson().getTypePerson());
+        assertEquals("transformedKeyType", result.getKey().getKeyType());
+    }
+
+    @Test
+    void transformUpdateKeyRq() {
+        CornerUpdateRq cornerUpdateRq = new CornerUpdateRq();
+        Person person = new Person();
+        person.setTypePerson("oldType");
+        cornerUpdateRq.setPerson(person);
+        Key key = new Key();
+        key.setKeyType("oldKeyType");
+        cornerUpdateRq.setKey(key);
+
+        CornerUpdateRq result = transformationUtil.transformUpdateKeyRq(cornerUpdateRq);
+
+        assertEquals("transformedType", result.getPerson().getTypePerson());
+        assertEquals("transformedKeyType", result.getKey().getKeyType());
     }
 }

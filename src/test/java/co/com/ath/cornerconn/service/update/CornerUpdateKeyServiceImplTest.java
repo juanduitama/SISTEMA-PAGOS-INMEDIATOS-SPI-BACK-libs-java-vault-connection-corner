@@ -1,10 +1,8 @@
-package co.com.ath.cornerconn.service;
+package co.com.ath.cornerconn.service.update;
 
 import co.com.ath.commons.util.ATHException;
 import co.com.ath.cornerconn.models.CornersHeadersRq;
 import co.com.ath.cornerconn.models.update.CornerUpdateRq;
-import co.com.ath.cornerconn.service.update.CornerUpdateKeyServiceImpl;
-import co.com.ath.cornerconn.service.update.ICornerUpdateKeyService;
 import jakarta.ws.rs.core.UriBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
