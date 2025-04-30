@@ -1,4 +1,4 @@
-package co.com.ath.cornerconn.service;
+package co.com.ath.cornerconn.service.enrollment;
 
 import co.com.ath.commons.util.ATHException;
 import co.com.ath.commons.util.Util;

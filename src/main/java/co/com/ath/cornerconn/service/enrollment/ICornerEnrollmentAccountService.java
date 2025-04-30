@@ -1,4 +1,4 @@
-package co.com.ath.cornerconn.service;
+package co.com.ath.cornerconn.service.enrollment;
 
 import co.com.ath.cornerconn.models.HttpResponseWrapper;
 import co.com.ath.cornerconn.models.enrollment.EnrollmentRq;
