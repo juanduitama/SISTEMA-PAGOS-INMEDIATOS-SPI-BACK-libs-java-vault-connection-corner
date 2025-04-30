@@ -16,6 +16,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
@@ -47,6 +48,7 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
      */
     private final TimeOutUtil timeOutUtil = new TimeOutUtil();
 
+
     /**
      *
      * @param cornerUpdateRq
@@ -59,15 +61,16 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
      * @throws IOException
      * @throws InterruptedException
      */
+
     @Override
     public HttpResponseWrapper updateKey(CornerUpdateRq cornerUpdateRq, String keyValue, CornersHeadersRq cornersHeadersRq, String uriConnection, int serviceTimeOut) throws URISyntaxException, IOException, InterruptedException {
-        String newUri = Util.object2String(uriUtil.buildStringToUriKey(uriConnection, keyValue));
+        URI newUri = (uriUtil.buildStringToUriKey(uriConnection, keyValue));
 
-        log.info("URI de conexion a camara Redeban (Update/Key): {}", newUri);
+        log.info("URI de conexion a camara Corner (Update/Key): {}", newUri);
 
         try (CloseableHttpClient client = CertificadoUtil.buildClient()) {
 
-            HttpPut httpPut = new HttpPut(newUri);
+            HttpPut httpPut = new HttpPut(String.valueOf(newUri));
 
             //headersUtil.addUpdateHeaders(httpPut, updateHeaders);
 
@@ -105,13 +108,14 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
      */
     @Override
     public HttpResponseWrapper updateKeyStatus(CornerUpdateRq cornerUpdateRq, String keyValue, CornersHeadersRq cornersHeadersRq, String uriConnection, int serviceTimeOut) throws URISyntaxException, IOException, InterruptedException {
-        String newUri = Util.object2String(uriUtil.buildStringToUriKey(uriConnection, keyValue));
-
+        URI newUri = (uriUtil.buildStringToUriKey(uriConnection, keyValue));
+        log.info("URI Entrante " + newUri);
         log.info("URI de conexion a camara Redeban (Update/Key): {}", newUri);
+
 
         try (CloseableHttpClient client = CertificadoUtil.buildClient()) {
 
-            HttpPut httpPut = new HttpPut(newUri);
+            HttpPut httpPut = new HttpPut(String.valueOf(newUri));
 
             //headersUtil.addUpdateHeaders(httpPut, updateHeaders);
 

@@ -11,7 +11,7 @@ import lombok.Getter;
  * <p>
  * Desarrollo ATH - SPBVI
  * <p>
- * Creado él: 09 de septiembre de 2024
+ * Creado él: 29 de Abril de 2025
  *
  * @author Luis F. Herreño Mateus
  * @version 1.0

@@ -22,9 +22,9 @@ public class UriUtil {
 
         if(uri.contains(QueryParamsEnum.KEY_ID.getValue())){
 
-            String uriWithAliasValue = uri.replace(QueryParamsEnum.KEY_ID.getValue(), keyValue);
-
-            return new URI(uriWithAliasValue);
+            String uriWithKeyValue = uri.replace(QueryParamsEnum.KEY_ID.getValue(), keyValue);
+            uriWithKeyValue.replace("\"", "");
+            return new URI(uriWithKeyValue);
         }
 
         return new URI(uri);

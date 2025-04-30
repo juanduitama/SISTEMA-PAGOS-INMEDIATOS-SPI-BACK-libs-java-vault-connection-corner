@@ -13,7 +13,7 @@ public interface ICornerUpdateKeyService {
                                   String uriConnection, int serviceTimeOut)
             throws URISyntaxException, IOException, InterruptedException;
 
-    HttpResponseWrapper updateKeyStatus(CornerUpdateRq cornerUpdateRq, String keyValue,CornersHeadersRq cornersHeadersRq,
+    HttpResponseWrapper updateKeyStatus(CornerUpdateRq cornerUpdateRq, String keyValue, CornersHeadersRq cornersHeadersRq,
                                     String uriConnection, int serviceTimeOut)
             throws URISyntaxException, IOException, InterruptedException;
 }

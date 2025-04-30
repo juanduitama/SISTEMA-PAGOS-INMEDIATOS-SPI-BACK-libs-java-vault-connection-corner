@@ -1,6 +1,8 @@
 package co.com.ath.cornerconn.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * MsgErrors
@@ -24,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * <p>
  * MsgErrors modelo de respuesta para mapear los errores
  */
+@Getter
+@Setter
 public class MsgErrors {
 
     /**

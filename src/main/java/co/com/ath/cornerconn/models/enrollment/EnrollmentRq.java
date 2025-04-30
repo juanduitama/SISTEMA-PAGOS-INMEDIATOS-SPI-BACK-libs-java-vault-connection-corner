@@ -14,7 +14,7 @@ import lombok.Setter;
  * <p>
  * Desarrollo ATH - SPBVI
  * <p>
- * Creado el: 23 de octubre de 2024
+ * Creado el: 29 de Abril de 2025
  *
  * @author Luis F. Herreño Mateus
  * @version 1.0
@@ -29,7 +29,7 @@ import lombok.Setter;
  * expresa de A Toda Hora S.A o de quién represente sus derechos.
  * <p>
  * <p>
- * Clase enrollmentRq que es el modelo del request de la petición del servicio de ACH transfiya.
+ * Clase enrollmentRq que es el modelo del request de la petición del servicio de Corner.
  */
 
 @Getter
