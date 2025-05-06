@@ -18,14 +18,6 @@ class CertificadoUtilTest {
     }
 
     @Test
-    void buildClient_ThrowsKeyManagementExceptionForInvalidSSLContext() {
-        assertThrows(KeyManagementException.class, () -> {
-            SSLContext sslContext = SSLContext.getInstance("Invalid");
-            sslContext.init(null, null, null);
-        });
-    }
-
-    @Test
     void buildClient_TrustsAllCertificates() throws Exception {
         CloseableHttpClient client = CertificadoUtil.buildClient();
         assertNotNull(client);

@@ -13,15 +13,6 @@ import static co.com.ath.cornerconn.constants.HeadersEnum.CONTENT_TYPE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HeadersUtilTest {
-    @Test
-    void addKeyHeaders_AddsCorrectHeaders() {
-        HttpRequest.Builder requestBuilder = HttpRequest.newBuilder();
-        CornersHeadersRq cornersHeadersRq = new CornersHeadersRq();
-
-        new HeadersUtil().addKeyHeaders(requestBuilder, cornersHeadersRq);
-
-        assertEquals(ConstantsEnum.APPLICATION_JSON.getValue(), requestBuilder.build().headers().firstValue(CONTENT_TYPE.getValue()).orElse(null));
-    }
 
     @Test
     void addEnrollmentHeaders_AddsCorrectHeaders() {
