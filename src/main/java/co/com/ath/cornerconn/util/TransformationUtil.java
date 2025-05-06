@@ -88,12 +88,12 @@ public class TransformationUtil {
      * @return un tipo de persona valido en ACH
      */
     public static String transformPersonType(String personType) {
-        for (PersonTypeEnum personTypeEnum: PersonTypeEnum.values()){
+        for (PersonTypeEnum personTypeEnum : PersonTypeEnum.values()) {
             if (personTypeEnum.getAthValue().equals(personType)) {
                 return personTypeEnum.getCornerValue();
             }
         }
-        return null;
+        throw new IllegalArgumentException("Invalid person type: " + personType);
     }
 
     public static EnrollmentRq transformEnrollmentRq(EnrollmentRq enrollmentDto){
@@ -104,6 +104,12 @@ public class TransformationUtil {
     }
 
     public static CornerUpdateRq transformUpdateKeyRq(CornerUpdateRq cornerUpdateRq){
+        if (cornerUpdateRq.getPerson() == null) {
+            throw new IllegalArgumentException("Person cannot be null");
+        }
+        if (cornerUpdateRq.getKey() == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
 
         cornerUpdateRq.getPerson().setTypePerson(transformPersonType(cornerUpdateRq.getPerson().getTypePerson()));
         cornerUpdateRq.getKey().setKeyType(transformKeyType(cornerUpdateRq.getKey().getKeyType()));

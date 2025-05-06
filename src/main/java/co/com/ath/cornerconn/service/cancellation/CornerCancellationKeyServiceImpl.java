@@ -64,7 +64,7 @@ public class CornerCancellationKeyServiceImpl implements ICornerCancellationKeyS
 
         String newUri = Util.object2String(uriUtil.buildStringToUriKey(uriConnection, keyValue));
 
-        log.info("URI de conexion a camara Redeban (KeyInquiry/Directory): {}", newUri);
+        log.info("URI de conexion a camara Corner (KeyInquiry/Directory): {}", newUri);
 
 
         try (CloseableHttpClient client = CertificadoUtil.buildClient()) {

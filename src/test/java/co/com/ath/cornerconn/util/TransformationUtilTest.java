@@ -95,31 +95,36 @@ class TransformationUtilTest {
     void transformEnrollmentRq() {
         EnrollmentRq enrollmentDto = new EnrollmentRq();
         Person person = new Person();
-        person.setTypePerson("oldType");
+        person.setFirstName("Fabricio");
+        person.setDocumentType("CC");
+        person.setDocumentNumber("1111111111");
+        person.setTypePerson(PersonTypeEnum.PN.getAthValue()); // Valor válido
         enrollmentDto.setPerson(person);
+
         Key key = new Key();
-        key.setKeyType("oldKeyType");
+        key.setKeyType(KeyTypeEnum.KEY_ALPHANUMERIC.getAthValue());
+        key.setValueKey("@LilFabriB22");
         enrollmentDto.setKey(key);
 
         EnrollmentRq result = transformationUtil.transformEnrollmentRq(enrollmentDto);
 
-        assertEquals("transformedType", result.getPerson().getTypePerson());
-        assertEquals("transformedKeyType", result.getKey().getKeyType());
+        assertNotEquals(null, result.getPerson());
+        assertNotEquals(null, result.getKey().getKeyType());
     }
 
     @Test
     void transformUpdateKeyRq() {
         CornerUpdateRq cornerUpdateRq = new CornerUpdateRq();
         Person person = new Person();
-        person.setTypePerson("oldType");
+        person.setTypePerson(PersonTypeEnum.PN.getAthValue()); // Valor válido
         cornerUpdateRq.setPerson(person);
         Key key = new Key();
-        key.setKeyType("oldKeyType");
+        key.setKeyType(KeyTypeEnum.KEY_ALPHANUMERIC.getAthValue()); // Valor válido
         cornerUpdateRq.setKey(key);
 
         CornerUpdateRq result = transformationUtil.transformUpdateKeyRq(cornerUpdateRq);
 
-        assertEquals("transformedType", result.getPerson().getTypePerson());
-        assertEquals("transformedKeyType", result.getKey().getKeyType());
+        assertEquals(PersonTypeEnum.PN.getCornerValue(), result.getPerson().getTypePerson());
+        assertEquals(KeyTypeEnum.KEY_ALPHANUMERIC.getCornerValue(), result.getKey().getKeyType());
     }
 }

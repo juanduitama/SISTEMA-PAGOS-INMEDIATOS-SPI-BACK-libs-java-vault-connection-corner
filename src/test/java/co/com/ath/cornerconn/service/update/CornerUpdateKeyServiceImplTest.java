@@ -2,6 +2,8 @@ package co.com.ath.cornerconn.service.update;
 
 import co.com.ath.commons.util.ATHException;
 import co.com.ath.cornerconn.models.CornersHeadersRq;
+import co.com.ath.cornerconn.models.Key;
+import co.com.ath.cornerconn.models.Person;
 import co.com.ath.cornerconn.models.update.CornerUpdateRq;
 import jakarta.ws.rs.core.UriBuilder;
 import org.junit.jupiter.api.AfterEach;
@@ -69,6 +71,9 @@ class CornerUpdateKeyServiceImplTest {
     @Test
     void updateKeyStatus() throws IOException, InterruptedException {
         CornerUpdateRq updateRq = new CornerUpdateRq();
+        updateRq.setPerson(new Person()); // Inicializa la propiedad person
+        updateRq.setKey(new Key());
+
         CornersHeadersRq headersRq = new CornersHeadersRq();
         headersRq.setContentType("application/json");
 
@@ -76,7 +81,7 @@ class CornerUpdateKeyServiceImplTest {
         String entityId = "02";
         String uriConnection = "http://example.com/api/" + entityId + "/" + keyId;
 
-        HttpResponse<String> response = mock(HttpResponse.class);
+        HttpResponse response = mock(HttpResponse.class);
         when(response.body()).thenReturn("RespuestaTest");
 
         HttpClient client = mock(HttpClient.class);
@@ -88,4 +93,5 @@ class CornerUpdateKeyServiceImplTest {
             updateKeyService.updateKeyStatus(updateRq, keyId, headersRq, uriConnection, 15);
         });
     }
+
 }

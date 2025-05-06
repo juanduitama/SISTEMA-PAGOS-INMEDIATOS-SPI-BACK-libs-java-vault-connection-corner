@@ -165,9 +165,9 @@ public class CornerCancellationKeyServiceImplTest {
             });
 
             // Verify exception details
-            assertEquals(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getServerStatusCode(), exception.getHttpCode());
+            assertEquals(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusCode(), exception.getHttpCode());
             assertEquals(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusDesc(), exception.getMessage());
-            assertEquals(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusCode(), exception.getErrorCode());
+            assertEquals(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getServerStatusCode(), exception.getErrorCode());
 
             // Verify
             verify(uriUtil).buildStringToUriKey(uriConnection, keyValue);

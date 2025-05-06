@@ -10,6 +10,7 @@ import co.com.ath.cornerconn.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -87,7 +88,7 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
                         closeableHttpResponse.getStatusLine().getStatusCode());
             }
 
-        } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException e) {
+        } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException | IllegalArgumentException | ConnectTimeoutException e) {
             throw new ATHException(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getServerStatusCode(),
                     ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusDesc(),
                     ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusCode());
@@ -132,7 +133,7 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
                         closeableHttpResponse.getStatusLine().getStatusCode());
             }
 
-        } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException e) {
+        } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException | IllegalArgumentException | ConnectTimeoutException e) {
             throw new ATHException(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getServerStatusCode(),
                     ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusDesc(),
                     ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusCode());
