@@ -6,7 +6,6 @@ import co.com.avc.cornerconn.models.Key;
 import co.com.avc.cornerconn.models.PaymentMethod;
 import co.com.avc.cornerconn.models.Person;
 import co.com.avc.cornerconn.models.enrollment.EnrollmentRq;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;

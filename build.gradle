@@ -59,7 +59,7 @@ dependencies {
     implementation group: 'org.glassfish', name: 'jakarta.el', version: '4.0.2'
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.1.Final'
 
-    implementation group: 'co.com.ath', name: 'spbvi-commons-lib', version: '1.0-SNAPSHOT'
+    implementation group: 'co.com.ath', name: 'spbvi-commons-lib', version: '2.0-SNAPSHOT'
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

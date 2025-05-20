@@ -6,7 +6,7 @@ import io.micronaut.serde.annotation.SerdeImport;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DetailErrors
@@ -46,7 +46,7 @@ public class DetailErrors {
      * Detalle de descripción del mensaje de error
      */
     @JsonProperty("loc")
-    private ArrayList<Object> loc;
+    private List<Object> loc;
 
     /**
      * Código del error

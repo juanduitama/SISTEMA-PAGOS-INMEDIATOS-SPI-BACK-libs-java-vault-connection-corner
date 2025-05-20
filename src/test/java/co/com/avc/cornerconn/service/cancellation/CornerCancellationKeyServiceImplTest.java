@@ -5,7 +5,6 @@ import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.constants.ResponseServiceEnum;
 import co.com.avc.cornerconn.models.CornersHeadersRq;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;

@@ -5,7 +5,6 @@ import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.constants.ResponseServiceEnum;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
 import co.com.avc.cornerconn.models.enrollment.EnrollmentRq;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
