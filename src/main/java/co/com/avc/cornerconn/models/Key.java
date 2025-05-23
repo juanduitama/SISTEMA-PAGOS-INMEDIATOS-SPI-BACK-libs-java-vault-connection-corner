@@ -3,8 +3,10 @@ package co.com.avc.cornerconn.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.SerdeImport;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Key
@@ -32,17 +34,20 @@ import lombok.Setter;
 @Setter
 @Introspected
 @SerdeImport(Key.class)
+@ToString
 public class Key {
 
     /**
      * Tipo de llave
      */
-    @JsonProperty("key_type")
+    @NotNull
+    @JsonProperty("keyType")
     private String keyType;
 
     /**
      * Valor de la llave
      */
-    @JsonProperty("value_key")
+    @NotNull
+    @JsonProperty("valueKey")
     private String valueKey;
 }

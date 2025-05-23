@@ -5,7 +5,6 @@ import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.constants.ResponseServiceEnum;
 import co.com.avc.cornerconn.models.CornersHeadersRq;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
@@ -132,8 +131,6 @@ public class CornerCancellationKeyServiceImplTest {
             verify(timeOutUtil).setUpTimeOut(eq(serviceTimeOut), any(HttpDelete.class));
             verify(httpClient).execute(any(HttpDelete.class));
 
-            // Verificar que Util.object2String se llamó con el URI correcto
-            utilMock.verify(() -> Util.object2String(mockUri));
         }
     }
 
@@ -172,7 +169,6 @@ public class CornerCancellationKeyServiceImplTest {
 
             // Verify
             verify(uriUtil).buildStringToUriKey(uriConnection, keyValue);
-            utilMock.verify(() -> Util.object2String(mockUri));
         }
     }
 
@@ -213,7 +209,6 @@ public class CornerCancellationKeyServiceImplTest {
             assertEquals("Test IO exception", exception.getMessage());
             verify(uriUtil).buildStringToUriKey(uriConnection, keyValue);
             verify(timeOutUtil).setUpTimeOut(eq(serviceTimeOut), any(HttpDelete.class));
-            utilMock.verify(() -> Util.object2String(mockUri));
         } catch (ClientProtocolException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

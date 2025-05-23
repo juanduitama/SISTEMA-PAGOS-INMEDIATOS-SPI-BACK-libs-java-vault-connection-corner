@@ -1,13 +1,15 @@
 package co.com.avc.cornerconn.util;
 
+import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.constants.KeyTypeEnum;
 import co.com.avc.cornerconn.constants.PersonTypeEnum;
 import co.com.avc.cornerconn.constants.StatusEnum;
 import co.com.avc.cornerconn.models.enrollment.EnrollmentRq;
 import co.com.avc.cornerconn.models.update.CornerUpdateRq;
-
+import lombok.extern.slf4j.Slf4j;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+
 
 /**
  * TransformationUtil
@@ -31,6 +33,7 @@ import java.time.format.DateTimeFormatter;
  * <p>
  * Clase TransformationUtil encargada de hacer las transformaciones de los valores de ATH  a los valores de ACH
  */
+@Slf4j
 public class TransformationUtil {
 
 
@@ -97,8 +100,12 @@ public class TransformationUtil {
     }
 
     public static EnrollmentRq transformEnrollmentRq(EnrollmentRq enrollmentDto){
+        log.info("Se ingresa a TransformEnrollmentRq");
         enrollmentDto.getPerson().setTypePerson(transformPersonType(enrollmentDto.getPerson().getTypePerson()));
         enrollmentDto.getKey().setKeyType(transformKeyType(enrollmentDto.getKey().getKeyType()));
+
+        log.info("Se transforma el tipo de persona y llave");
+        log.info("Request servicio a Camara Corner {}", Util.object2StringWithNulls(enrollmentDto));
 
         return enrollmentDto;
     }

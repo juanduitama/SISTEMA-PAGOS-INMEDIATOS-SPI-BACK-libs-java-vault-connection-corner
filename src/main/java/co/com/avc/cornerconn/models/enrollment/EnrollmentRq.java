@@ -6,8 +6,11 @@ import co.com.avc.cornerconn.models.Person;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.SerdeImport;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.java.Log;
 
 /**
  * enrollmentRq
@@ -36,24 +39,28 @@ import lombok.Setter;
 @Setter
 @Introspected
 @SerdeImport(EnrollmentRq.class)
+@ToString
 public class EnrollmentRq {
 
     /**
      * Información de la persona para la llave.
      */
+    @NotNull
     @JsonProperty("person")
     private Person person;
 
     /**
      * Información de la llave por participante.
      */
+    @NotNull
     @JsonProperty("key")
     private Key key;
 
     /**
      * Método de pago (Información de la cuenta por participante).
      */
-    @JsonProperty("payment_method")
+    @NotNull
+    @JsonProperty("paymentMethod")
     private PaymentMethod paymentMethod;
 
     /**

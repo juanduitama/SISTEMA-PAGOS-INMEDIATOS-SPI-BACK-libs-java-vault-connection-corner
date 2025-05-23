@@ -5,7 +5,6 @@ import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.constants.ResponseServiceEnum;
 import co.com.avc.cornerconn.models.CornersHeadersRq;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.CertificadoUtil;
 import co.com.avc.cornerconn.util.TimeOutUtil;
 import co.com.avc.cornerconn.util.UriUtil;
@@ -16,6 +15,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -52,7 +52,7 @@ public class CornerInquiriesKeyServiceImpl implements  ICornerInquiriesKeyServic
                                                     String uriConnection, int serviceTimeOut)
             throws URISyntaxException, IOException, InterruptedException {
 
-        String newUri = Util.object2String(uriUtil.buildStringToUriKey(uriConnection, keyValue));
+        URI newUri = uriUtil.buildStringToUriKey(uriConnection, keyValue);
 
         log.info("URI de conexion a camara Corner (KeyInquiry/Directory): {}", newUri);
 

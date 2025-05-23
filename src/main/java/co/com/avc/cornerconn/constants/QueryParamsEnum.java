@@ -34,8 +34,8 @@ public enum QueryParamsEnum {
      * Identificador único de la llave
      * que se va a consultar
      */
-    KEY_ID("{value_key}"),
-
+    VALUE_KEY("{valueKey}"),
+    URL_DICE("/lookup.dice"),
     ;
 
     private final String value;

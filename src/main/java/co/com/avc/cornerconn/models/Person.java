@@ -3,8 +3,10 @@ package co.com.avc.cornerconn.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.SerdeImport;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Person
@@ -32,54 +34,60 @@ import lombok.Setter;
 @Setter
 @Introspected
 @SerdeImport(Person.class)
+@ToString
 public class Person {
 
 
     /**
      * Primer nombre del cliente
      */
-    @JsonProperty("first_name")
+    @NotNull
+    @JsonProperty("firstName")
     private String firstName;
 
     /**
      * Segundo nombre del cliente
      */
-    @JsonProperty("second_name")
+    @JsonProperty("secondName")
     private String secondName;
 
     /**
      * Primer apellido del cliente
      */
-    @JsonProperty("first_surname")
+    @NotNull
+    @JsonProperty("firstSurName")
     private String firstSurName;
 
     /**
      * Segundo apellido del cliente
      */
-    @JsonProperty("second_surname")
+    @JsonProperty("secondSurName")
     private String secondSurName;
 
     /**
      * Tipo de persona
      */
-    @JsonProperty("type_person")
+    @NotNull
+    @JsonProperty("typePerson")
     private String typePerson;
 
     /**
      * Nombre legal de la empresa
      */
-    @JsonProperty("business_name")
+    @JsonProperty("businessName")
     private String businessName;
 
     /**
      * Tipo de documento
      */
-    @JsonProperty("document_type")
+    @NotNull
+    @JsonProperty("documentType")
     private String documentType;
 
     /**
      * Numero de documento
      */
-    @JsonProperty("document_number")
+    @NotNull
+    @JsonProperty("documentNumber")
     private String documentNumber;
 }

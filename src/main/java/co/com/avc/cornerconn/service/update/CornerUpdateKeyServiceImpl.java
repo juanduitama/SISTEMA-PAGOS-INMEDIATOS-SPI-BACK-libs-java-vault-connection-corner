@@ -6,7 +6,6 @@ import co.com.avc.cornerconn.constants.ResponseServiceEnum;
 import co.com.avc.cornerconn.models.CornersHeadersRq;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
 import co.com.avc.cornerconn.models.update.CornerUpdateRq;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -20,6 +19,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -66,7 +66,7 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
 
     @Override
     public HttpResponseWrapper updateKey(CornerUpdateRq cornerUpdateRq, String keyValue, CornersHeadersRq cornersHeadersRq, String uriConnection, int serviceTimeOut) throws URISyntaxException, IOException, InterruptedException {
-        URI newUri = (uriUtil.buildStringToUriKey(uriConnection, keyValue));
+        URI newUri = uriUtil.buildStringToUriKey(uriConnection, keyValue);
 
         log.info("URI de conexion a camara Corner (Update/Key): {}", newUri);
 
@@ -80,7 +80,7 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
 
             StringEntity entity = new StringEntity(Util.object2String(TransformationUtil
                     .transformUpdateKeyRq(cornerUpdateRq)),
-                    ContentType.TEXT_PLAIN.withCharset(StandardCharsets.UTF_8));
+                    ContentType.APPLICATION_JSON);
 
             httpPut.setEntity(entity);
 
@@ -134,7 +134,8 @@ public class CornerUpdateKeyServiceImpl implements ICornerUpdateKeyService {
                         closeableHttpResponse.getStatusLine().getStatusCode());
             }
 
-        } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException | IllegalArgumentException | ConnectTimeoutException e) {
+        } catch (NoSuchAlgorithmException | KeyStoreException | KeyManagementException | IllegalArgumentException | ConnectTimeoutException |
+                 UnknownHostException e) {
             throw new ATHException(ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getServerStatusCode(),
                     ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusDesc(),
                     ResponseServiceEnum.ERROR_TEC_EXCEPTION_VAULT_CONN.getStatusCode());

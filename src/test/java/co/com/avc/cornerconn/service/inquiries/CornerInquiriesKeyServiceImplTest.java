@@ -3,7 +3,6 @@ package co.com.avc.cornerconn.service.inquiries;
 import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.models.CornersHeadersRq;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.CertificadoUtil;
 import co.com.avc.cornerconn.util.TimeOutUtil;
 import co.com.avc.cornerconn.util.UriUtil;
@@ -116,7 +115,7 @@ public class CornerInquiriesKeyServiceImplTest {
             verify(uriUtil).buildStringToUriKey(uriConnection, keyValue);
             verify(timeOutUtil).setUpTimeOut(eq(serviceTimeOut), any(HttpGet.class));
             verify(httpClient).execute(any(HttpGet.class));
-            utilMock.verify(() -> Util.object2String(mockUri));
+
         }
     }
 

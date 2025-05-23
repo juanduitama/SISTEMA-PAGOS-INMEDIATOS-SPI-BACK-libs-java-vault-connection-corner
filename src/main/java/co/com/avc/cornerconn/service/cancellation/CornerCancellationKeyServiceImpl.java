@@ -5,7 +5,6 @@ import co.com.ath.commons.util.Util;
 import co.com.avc.cornerconn.constants.ResponseServiceEnum;
 import co.com.avc.cornerconn.models.CornersHeadersRq;
 import co.com.avc.cornerconn.models.HttpResponseWrapper;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -14,6 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -58,7 +58,7 @@ public class CornerCancellationKeyServiceImpl implements ICornerCancellationKeyS
     @Override
     public HttpResponseWrapper deleteKey(String keyValue, CornersHeadersRq cornersHeadersRq, String uriConnection, int serviceTimeOut) throws URISyntaxException, IOException, InterruptedException {
 
-        String newUri = Util.object2String(uriUtil.buildStringToUriKey(uriConnection, keyValue));
+        URI newUri = uriUtil.buildStringToUriKey(uriConnection, keyValue);
 
         log.info("URI de conexion a camara Corner (KeyInquiry/Directory): {}", newUri);
 

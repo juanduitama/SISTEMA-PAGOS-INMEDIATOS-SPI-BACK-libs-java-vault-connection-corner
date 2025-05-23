@@ -11,8 +11,11 @@ class QueryParamsEnumTest {
     @EnumSource(QueryParamsEnum.class)
     void testQueryParamsEnum(QueryParamsEnum queryParamsEnum) {
         switch (queryParamsEnum) {
-            case KEY_ID:
-                assertEquals("{value_key}", queryParamsEnum.getValue());
+            case VALUE_KEY:
+                assertEquals("{valueKey}", queryParamsEnum.getValue());
+                break;
+            case URL_DICE:
+                assertEquals("/lookup.dice", queryParamsEnum.getValue());
                 break;
             default:
                 fail("Unexpected value: " + queryParamsEnum);

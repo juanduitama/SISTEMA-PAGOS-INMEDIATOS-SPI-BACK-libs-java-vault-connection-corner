@@ -3,8 +3,10 @@ package co.com.avc.cornerconn.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.SerdeImport;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * PaymentMethod
@@ -32,17 +34,20 @@ import lombok.Setter;
 @Setter
 @Introspected
 @SerdeImport(PaymentMethod.class)
+@ToString
 public class PaymentMethod {
 
     /**
      * Tipo de pago
      */
-    @JsonProperty("type_payment_acc")
+    @NotNull
+    @JsonProperty("typePaymentAcc")
     private String typePaymentAcc;
 
     /**
      * Número de cuenta
      */
-    @JsonProperty("account_number")
+    @NotNull
+    @JsonProperty("accountNumber")
     private String accountNumber;
 }

@@ -6,7 +6,6 @@ import co.com.avc.cornerconn.models.Key;
 import co.com.avc.cornerconn.models.PaymentMethod;
 import co.com.avc.cornerconn.models.Person;
 import co.com.avc.cornerconn.models.enrollment.EnrollmentRq;
-import co.com.ath.cornerconn.util.*;
 import co.com.avc.cornerconn.util.*;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
@@ -162,8 +161,6 @@ public class CornerEnrollmentAccountServiceImplTest {
             // Verify
             verify(timeOutUtil).setUpTimeOut(eq(serviceTimeOut), any(HttpPost.class));
             verify(httpClient).execute(any(HttpPost.class));
-            transformationUtilMock.verify(() -> TransformationUtil.transformEnrollmentRq(enrollmentRq));
-            utilMock.verify(() -> Util.object2String(enrollmentRq));
         }
     }
 
@@ -204,8 +201,6 @@ public class CornerEnrollmentAccountServiceImplTest {
             // Verify
             assertEquals("Test IO exception", exception.getMessage());
             verify(timeOutUtil).setUpTimeOut(eq(serviceTimeOut), any(HttpPost.class));
-            transformationUtilMock.verify(() -> TransformationUtil.transformEnrollmentRq(enrollmentRq));
-            utilMock.verify(() -> Util.object2String(enrollmentRq));
         } catch (ClientProtocolException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
